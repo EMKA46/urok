@@ -3,16 +3,28 @@ import "./App.css";
 import { TodoForm } from "./components/Todos/TodoForm";
 import { TodoList } from "./components/Todos/TodoList";
 function App() {
-  const [todos, setTodos] = useState(["Sdelat uroki"]);
+  const [todos, setTodos] = useState([]);
 
   const addTodoHedler = (text) => {
-    setTodos([...todos, text]);
+    const newTodo={
+      text: text,
+      isCompleted:false,
+      id:crypto.randomUUID()
+    }
+    setTodos([...todos,newTodo])
   };
+
+  const deleteTodoHadler=(index)=>{
+    const updatedTodo=todos.filter((inx)=>{
+      return inx.id!==index
+    })
+    setTodos(updatedTodo)
+  }
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHedler} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} deleteTodo={deleteTodoHadler} />
     </div>
   );
 }

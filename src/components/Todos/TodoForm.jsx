@@ -6,6 +6,7 @@ export const TodoForm = ({ addTodo }) => {
 
   const submitHedler = (e) => {
     e.preventDefault();
+    if(!text.trim().length) return
     addTodo(text);
     setText("");
   };
