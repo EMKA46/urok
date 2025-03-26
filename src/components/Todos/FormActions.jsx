@@ -15,6 +15,7 @@ export const FormsActions = ({ todos, clearCompleted }) => {
   );
 };
 
+
 const ActionsContainer = styled.div`
   margin-top: 20px;
 `;

@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 
-export const Todo = ({ todo, deleteTodo }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
-
+export const Todo = ({ todo, deleteTodo, toggleComplete }) => {
   return (
-    <TodoWrapper $completed={isCompleted}>
-      <TodoText $completed={isCompleted}>{todo.text}</TodoText>
-      <StyledCheckIcon onClick={() => setIsCompleted(!isCompleted)} />
+    <TodoWrapper $completed={todo.isCompleted}>
+      <TodoText $completed={todo.isCompleted}>{todo.text}</TodoText>
+      <StyledCheckIcon onClick={() => toggleComplete(todo.id)} />
       <StyledDeleteIcon onClick={() => deleteTodo(todo.id)} />
     </TodoWrapper>
   );
